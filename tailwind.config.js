@@ -12,7 +12,11 @@ module.exports = {
       '2xl': '1280px',
       '3xl': '1440px',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        nunito: ['Nunito', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };

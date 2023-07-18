@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Explore, ForgotPassword, Offers, Profile, SignIn, SignUp, NavBar,
 } from './components/Pages';
@@ -16,6 +18,8 @@ const App = () => (
         <Route path="/sign-in" element={<SignIn />} />
       </Routes>
     </Router>
+
+    <ToastContainer />
   </>
 );
 

@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
 
 const SignIn = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -18,9 +22,17 @@ const SignIn = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSignIn = async (e) => {
     e.preventDefault();
-    console.log('email');
+    try {
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      if (userCredential.user) {
+        navigate('/profile');
+      }
+    } catch (e) {
+      toast.error('Invalid login credentials');
+    }
   };
 
   const handleShowPassword = () => {
@@ -35,7 +47,7 @@ const SignIn = () => {
       </header>
 
       <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignIn}>
           <div className="form-control">
             <input
               type="email"
@@ -69,7 +81,7 @@ const SignIn = () => {
             </Link>
           </div>
           <button
-            type="button"
+            type="submit"
             className="bg-[#5ea51e] p-3 flex items-center w-full justify-center"
           >
             <span className="text-xs font-bold text-white hover:text-gray-200">SIGN IN</span>

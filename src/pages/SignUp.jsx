@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import auth from '../firebase.config';
+import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { toast } from 'react-toastify';
+import { auth, db } from '../firebase.config';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
 
 const SignUp = () => {
@@ -26,17 +28,31 @@ const SignUp = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth, email, password,
       );
-      // const { user } = userCredential.user;
+      const { uid } = userCredential.user;
+
       updateProfile(auth.currentUser, {
         displayName: name,
       });
 
+      // Persist the user info
+      const formDataCopy = {
+        ...formData,
+      };
+
+      // Don't persist the password
+      delete formDataCopy.password;
+
+      // Add a timestamp to the user data
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, 'users', uid), formDataCopy);
+
       navigate('/profile');
     } catch (e) {
-      console.log(e);
+      toast.error('Oops. Something went wrong!');
     }
   };
 

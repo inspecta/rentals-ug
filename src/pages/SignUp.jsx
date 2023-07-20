@@ -5,6 +5,7 @@ import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { auth, db } from '../firebase.config';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
+import OAuth from '../components/OAuth';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const SignUp = () => {
       formDataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, 'users', uid), formDataCopy);
-
+      toast.success('You have successfully been registered!');
       navigate('/profile');
     } catch (e) {
       toast.error('Oops. Something went wrong!');
@@ -106,6 +107,7 @@ const SignUp = () => {
               />
             </button>
           </div>
+          <OAuth />
           <button
             type="submit"
             className="bg-[#5ea51e] p-3 flex items-center w-full justify-center"

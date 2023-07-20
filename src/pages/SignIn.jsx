@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
+import OAuth from '../components/OAuth';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const SignIn = () => {
       const auth = getAuth();
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential.user) {
+        toast.success('Successful Login!');
         navigate('/profile');
       }
     } catch (e) {
@@ -80,6 +82,7 @@ const SignIn = () => {
               Forgot Password
             </Link>
           </div>
+          <OAuth />
           <button
             type="submit"
             className="bg-[#5ea51e] p-3 flex items-center w-full justify-center"

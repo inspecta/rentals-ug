@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap");
+
+@layer components {
+  .hamburger {
+    @apply w-4 h-4 flex flex-col justify-around flex-nowrap z-10 mr-2;
+  }
+
+  .burger {
+    @apply w-4 h-[0.15rem] rounded-lg origin-center transition-all duration-300 bg-white;
+  }
+
+  .form-control {
+    @apply border p-2 mb-4 w-full rounded-md flex items-center space-x-1;
+  }
+
+  input {
+    @apply outline-0;
+  }
+
+  .mobile-menu {
+    @apply flex flex-col space-y-5;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    color: #fff;
+    width: 200px;
+  }
+}

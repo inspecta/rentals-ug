@@ -70,8 +70,23 @@ const Offers = () => {
               <main>
                 <ul>
                   {listings.map((listing) => (
+                    // <ListingItem
+                    //   listing={listing.data}
+                    //   id={listing.id}
+                    //   key={listing.id}
+                    // />
                     <ListingItem
-                      listing={listing.data}
+                      listing={{
+                        type: listing.data.type,
+                        imgUrls: listing.data.imgUrls,
+                        name: listing.data.name,
+                        bedrooms: listing.data.bedrooms,
+                        bathrooms: listing.data.bathrooms,
+                        regularPrice: listing.data.regularPrice,
+                        discountedPrice: listing.data.discountedPrice,
+                        address: listing.data.address,
+                        offer: listing.data.offer,
+                      }}
                       id={listing.id}
                       key={listing.id}
                     />

@@ -1,6 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
+import { homeIcon, keyboardArrowRightIcon } from '../components/Images';
 
 const Profile = () => {
   const auth = getAuth();
@@ -32,6 +33,21 @@ const Profile = () => {
         <div className="border p-4 mt-4 rounded-md">
           <h4 className="font-extrabold text-2xl">{name}</h4>
           <p>{email}</p>
+        </div>
+
+        <div className="py-8">
+          <Link to="/add-listing" className="flex justify-between">
+            <img
+              src={homeIcon}
+              alt="Home Icon"
+            />
+            <p>Sale or Rent your home!</p>
+            <img
+              src={keyboardArrowRightIcon}
+              className="rounded-xl bg-black"
+              alt="Arrow Icon"
+            />
+          </Link>
         </div>
       </main>
     </div>

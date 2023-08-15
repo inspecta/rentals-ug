@@ -1,7 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { toast } from 'react-toastify';
-import { homeIcon, keyboardArrowRightIcon } from '../components/Images';
+import { homeIcon } from '../components/Images';
 
 const Profile = () => {
   const auth = getAuth();
@@ -21,7 +21,7 @@ const Profile = () => {
         <h2 className="text-2xl font-extrabold">My Profile</h2>
         <button
           type="button"
-          className="bg-green-500 rounded-md px-3 text-white hover:bg-green-800"
+          className="bg-green-500 rounded-md px-3 text-white font-thin hover:bg-green-600"
           onClick={onLogout}
         >
           Logout
@@ -37,16 +37,14 @@ const Profile = () => {
 
         <div className="py-8">
           <Link to="/add-listing" className="flex justify-between">
-            <img
-              src={homeIcon}
-              alt="Home Icon"
-            />
-            <p>Sale or Rent your home!</p>
-            <img
-              src={keyboardArrowRightIcon}
-              className="rounded-xl bg-black"
-              alt="Arrow Icon"
-            />
+            <button
+              type="button"
+              className="flex items-center gap-2 bg-green-500 rounded-md px-3 py-2 text-white font-thin
+              text-md hover:bg-green-600 hover:text-white transition-colors md:text-lg"
+            >
+              <img src={homeIcon} alt="Home Icon" className="filter invert" />
+              Sale or Rent your home
+            </button>
           </Link>
         </div>
       </main>

@@ -385,7 +385,7 @@ const AddListing = () => {
           <div className="form-div">
             <label htmlFor="Images" className="form-label">
               Images
-              <p>Upload a maximum of 6 images. First image will be the cover.</p>
+              <p className="font-thin py-3 text-gray-600">Upload a maximum of 6 images. First image will be the cover.</p>
               <input
                 className=""
                 type="file"
@@ -401,11 +401,11 @@ const AddListing = () => {
           </div>
           {/* Submit */}
           <div
-            className="mt-4 text-center"
+            className="mt-4 flex justify-center"
           >
             <button
               type="submit"
-              className="button"
+              className="btn btn-primary"
             >
               Create Listing
             </button>

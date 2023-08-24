@@ -8,8 +8,8 @@ import {
   where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { toast } from 'react-toastify';
+import Spinner from '../components/Spinner';
 import ListingItem from '../components/ListingItem';
 import { db } from '../firebase.config';
 
@@ -56,25 +56,19 @@ const Offers = () => {
   }, []);
 
   return (
-    <div>
-      <header>
-        <p>
-          Places with Offers
-        </p>
+    <div className="font-nunito p-3 bg-[#f7f7f7] lg:p-3 xl:p-9">
+      <header className="text-center">
+        <p className="text-[#5ea51e] font-bold p-4">OUR PROPERTIES</p>
+        <h1 className="py-10 pt-0 text-4xl font-extrabold">Featured Properties</h1>
       </header>
       {loading
-        ? <ClipLoader />
+        ? <Spinner />
         : (listings && listings.length > 0)
           ? (
             <>
               <main>
-                <ul>
+                <ul className="grid grid-cols-1 md:grid-cols-2 md:gap-4 xl:grid-cols-3">
                   {listings.map((listing) => (
-                    // <ListingItem
-                    //   listing={listing.data}
-                    //   id={listing.id}
-                    //   key={listing.id}
-                    // />
                     <ListingItem
                       listing={{
                         type: listing.data.type,
@@ -86,6 +80,8 @@ const Offers = () => {
                         discountedPrice: listing.data.discountedPrice,
                         address: listing.data.address,
                         offer: listing.data.offer,
+                        owner: listing.data.userRef,
+                        timestamp: listing.data.timestamp,
                       }}
                       id={listing.id}
                       key={listing.id}

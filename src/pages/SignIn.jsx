@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
 import OAuth from '../components/OAuth';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const auth = getAuth();
+
+  // Check if the user is already signed in
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        toast.success(`You are already signed in as ${user.displayName}`);
+        navigate('/profile');
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, [auth]);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -16,6 +30,7 @@ const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const { email, password } = formData;
+
   const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -26,7 +41,6 @@ const SignIn = () => {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-      const auth = getAuth();
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential.user) {
         toast.success('Successful Login!');
@@ -83,17 +97,19 @@ const SignIn = () => {
             </Link>
           </div>
           <OAuth />
-          <button
-            type="submit"
-            className="bg-[#5ea51e] p-3 flex items-center w-full justify-center"
-          >
-            <span className="text-xs font-bold text-white hover:text-gray-200">SIGN IN</span>
-            <img
-              src={keyboardArrowRightIcon}
-              className="rounded-xl fill-white"
-              alt="Sign In Icon"
-            />
-          </button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="btn btn-primary"
+            >
+              <span className="btn-text">SIGN IN</span>
+              <img
+                src={keyboardArrowRightIcon}
+                className="rounded-xl fill-white"
+                alt="Sign In Icon"
+              />
+            </button>
+          </div>
           <div className="p-10 text-center hover:text-[#5ea51d] font-normal underline">
             <Link to="/sign-up">
               Sign Up Instead

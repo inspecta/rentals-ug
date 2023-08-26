@@ -21,7 +21,7 @@ const Profile = () => {
         <h2 className="text-2xl font-extrabold">My Profile</h2>
         <button
           type="button"
-          className="bg-green-500 rounded-md px-3 text-white font-thin hover:bg-green-600"
+          className="btn btn-primary"
           onClick={onLogout}
         >
           Logout
@@ -36,13 +36,12 @@ const Profile = () => {
         </div>
 
         <div className="py-8">
-          <Link to="/add-listing" className="flex justify-between">
+          <Link to="/add-listing" className="flex justify-between items-center">
             <button
               type="button"
-              className="flex items-center gap-2 bg-green-500 rounded-md px-3 py-2 text-white font-thin
-              text-md hover:bg-green-600 hover:text-white transition-colors md:text-lg"
+              className="btn btn-primary"
             >
-              <img src={homeIcon} alt="Home Icon" className="filter invert" />
+              <img src={homeIcon} alt="Home Icon" className="filter invert mr-2" />
               Sale or Rent your home
             </button>
           </Link>

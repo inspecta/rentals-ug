@@ -44,10 +44,10 @@ const Explore = () => (
             }}
           >
             <SliderTiles
-              title="Let Your Home Be Unique & Stylish"
-              description="A small river named Duden flows by their place and supplies
-              it with the necessary regelialia. It is a paradisematic country, in which
-              roasted parts of sentences fly into your mouth."
+              title="Find Your Dream Home"
+              description="Discover a wide range of rental and sale listings tailored
+              to your preferences. Whether it's a cozy apartment, a spacious house, or
+              a commercial space, Rentals Ug has the perfect place for you."
               buttonText="Learn More"
             />
           </Slide>
@@ -58,10 +58,11 @@ const Explore = () => (
             }}
           >
             <SliderTiles
-              title="Let Your Home Be Unique & Stylish"
-              description="A small river named Duden flows by their place and supplies
-              it with the necessary regelialia. It is a paradisematic country, in which
-              roasted parts of sentences fly into your mouth."
+              title="List Your Property with Ease"
+              description="Are you a property owner looking to rent or sell? List your
+              property effortlessly on Rentals Ug. Our user-friendly platform makes it
+              simple to showcase your property to a vast audience of potential buyers
+              and tenants."
               buttonText="Learn More"
             />
           </Slide>
@@ -72,7 +73,7 @@ const Explore = () => (
             }}
           >
             <SliderTiles
-              title="Let Your Home Be Unique & Stylish"
+              title="Let Out Your Home Be Unique"
               description="A small river named Duden flows by their place and supplies
               it with the necessary regelialia. It is a paradisematic country, in which
               roasted parts of sentences fly into your mouth."
@@ -86,10 +87,10 @@ const Explore = () => (
             }}
           >
             <SliderTiles
-              title="Let Your Home Be Unique & Stylish"
-              description="A small river named Duden flows by their place and supplies
-              it with the necessary regelialia. It is a paradisematic country, in which
-              roasted parts of sentences fly into your mouth."
+              title="Real Estate Insights and Tips"
+              description="Stay informed with our latest real estate insights and expert tips.
+              Whether you're a seasoned investor or a first-time buyer, our blog covers everything
+              from market trends to home improvement ideas to help you make informed decisions."
               buttonText="Learn More"
             />
           </Slide>

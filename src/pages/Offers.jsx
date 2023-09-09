@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import Spinner from '../components/Spinner';
 import ListingItem from '../components/ListingItem';
 import { db } from '../firebase.config';
+import Container from '../components/Container';
 
 const Offers = () => {
   // Handle the listings in a useState hook
@@ -56,7 +57,7 @@ const Offers = () => {
   }, []);
 
   return (
-    <div className="font-nunito p-3 bg-[#f7f7f7] lg:p-3 xl:p-9">
+    <Container>
       <header className="text-center">
         <p className="text-[#5ea51e] font-bold p-4">OUR PROPERTIES</p>
         <h1 className="py-10 pt-0 text-4xl font-extrabold">Featured Properties</h1>
@@ -92,11 +93,11 @@ const Offers = () => {
             </>
           )
           : (
-            <p>
+            <p className="text-center font-light text-orange-500 text-xl">
               No listings with offers.
             </p>
           )}
-    </div>
+    </Container>
   );
 };
 

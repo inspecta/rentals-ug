@@ -39,7 +39,7 @@ const ListingItem = ({ listing, id }) => {
   useEffect(() => {
     const calculateListingDuration = calculateTimeDifference(listing.timestamp);
     setTimeAgo(calculateListingDuration);
-  }, []);
+  }, [listing.timestamp]);
 
   if (!listing || !listing.type || !listing.imgUrls) {
     // Handle the case when the necessary data is not available

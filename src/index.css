@@ -36,4 +36,66 @@
     color: #fff;
     width: 200px;
   }
+
+  .nav-link-2 {
+    @apply text-[14px] font-semibold uppercase px-3 text-white hover:text-green-500;
+  }
+
+  .activeFormButton {
+    @apply bg-green-500 rounded-xl text-gray-100 px-5 py-1;
+  }
+
+  .formButton {
+    @apply bg-gray-200 rounded-xl text-gray-900 px-5 py-1;
+  }
+
+  .activeMenuItem {
+    @apply underline text-green-500;
+  }
+
+  .category-text {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl font-thin opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+  }
+
+  .category-image {
+    @apply w-full h-80 group-hover:opacity-75 transition-opacity duration-300 xl:h-[50vh];
+  }
+
+  .form-div {
+    @apply border px-4 py-3 rounded-md flex justify-between items-center mt-4;
+  }
+
+  .form-label {
+    @apply w-full;
+  }
+
+  .form-inputs {
+    @apply border border-gray-300 px-3 py-2 rounded-md w-full mt-2 focus:border-gray-800;
+  }
+
+  .component-header {
+    @apply p-10 text-3xl font-extrabold;
+  }
+
+  .btn {
+    @apply rounded-sm px-3 py-2 mt-2 flex items-center font-thin text-white md:text-lg;
+  }
+
+  .btn-primary {
+     @apply bg-[#5ea51e] flex items-center justify-center hover:bg-[#43810c];
+  }
+
+  .btn-secondary {
+    @apply bg-orange-500 hover:bg-orange-600 transition-colors;
+  }
+
+  .btn-text {
+    @apply text-xs font-bold text-white;
+  }
+
+  /* Listing Slider */
+  .swiper-button-prev:after {
+    @apply  bg-blue-600;
+  }
+
 }

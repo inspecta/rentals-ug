@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const NavBar = () => {
@@ -13,8 +13,12 @@ const NavBar = () => {
     setIsMenuOpen(false);
   };
 
+  const activePage = ({ isActive }) => ({
+    color: isActive ? 'rgb(0 255 92)' : '',
+  });
+
   return (
-    <nav className="w-full px-4 py-5 font-nunito bg-[#081637] absolute z-10 lg:bg-black lg:bg-opacity-10 xl:px-40">
+    <nav className="w-full px-4 py-5 mb-10 font-nunito bg-[#081637] fixed z-10 lg:bg-black lg:bg-opacity-40 xl:px-40">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/">
@@ -39,35 +43,60 @@ const NavBar = () => {
         <div className="hidden lg:block">
           <ul className="lg:flex items-center justify-center">
             <li className="nav-link-2">
-              <Link to="/" className="nav-item" onClick={closeMenu}>
+              <NavLink
+                to="/"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
                 HOME
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-link-2">
-              <Link to="/" className="nav-item" onClick={closeMenu}>
-                ABOUT
-              </Link>
+              <NavLink
+                to="/category/rent"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
+                RENTALS
+              </NavLink>
             </li>
             <li className="nav-link-2">
-              <Link to="/" className="nav-item" onClick={closeMenu}>
-                PROPERTIES
-              </Link>
+              <NavLink
+                to="/category/sale"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
+                SALES
+              </NavLink>
             </li>
             <li className="nav-link-2">
-              <Link to="/offers" className="nav-item" onClick={closeMenu}>
+              <NavLink
+                to="/offers"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
                 OFFERS
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-link-2">
-              <Link to="/offers" className="nav-item" onClick={closeMenu}>
-                CONTACT
-              </Link>
+              <NavLink
+                to="/about"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
+                ABOUT
+              </NavLink>
             </li>
           </ul>
         </div>
 
         <div className="hidden bg-green-500 text-white px-3 py-2 rounded-md hover:bg-[#5ea51e] lg:block">
-          <Link to="/offers" className="nav-item" onClick={closeMenu}>
+          <Link to="/add-listing" className="nav-item" onClick={closeMenu}>
             SUBMIT A PROPERTY
           </Link>
         </div>
@@ -83,44 +112,55 @@ const NavBar = () => {
             transition={{ duration: 0.3 }}
           >
             <li className="nav-link">
-              <Link to="/" className="nav-item" onClick={closeMenu}>
+              <NavLink
+                to="/"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
                 HOME
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-link">
-              <Link to="/offers" className="nav-item" onClick={closeMenu}>
+              <NavLink
+                to="/category/rent"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
+                RENTALS
+              </NavLink>
+            </li>
+            <li className="nav-link">
+              <NavLink
+                to="/category/sale"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
+                SALES
+              </NavLink>
+            </li>
+            <li className="nav-link">
+              <NavLink
+                to="/offers"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
                 OFFERS
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-link">
-              <Link to="/offers" className="nav-item" onClick={closeMenu}>
-                CONTACT
-              </Link>
-            </li>
-            <li className="nav-link">
-              <Link to="/offers" className="nav-item" onClick={closeMenu}>
+              <NavLink
+                to="/about"
+                className="nav-item"
+                style={activePage}
+                onClick={closeMenu}
+              >
                 ABOUT
-              </Link>
+              </NavLink>
             </li>
-            {/* {
-              auth.currentUser ? (
-                <li className="nav-link">
-                  <button
-                    type="button"
-                    className="av-item bg-[#5ea51d] p-3 rounded-sm text-center"
-                    onClick={onLogout}
-                  >
-                    LOG OUT
-                  </button>
-                </li>
-              ) : (
-                <li className="nav-link">
-                  <Link to="/sign-in" className="nav-item bg-[#5ea51d] p-3 rounded-sm text-center" onClick={closeMenu}>
-                    SIGN IN
-                  </Link>
-                </li>
-              )
-            } */}
           </motion.ul>
         )}
       </AnimatePresence>

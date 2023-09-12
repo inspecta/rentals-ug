@@ -1,10 +1,10 @@
-import ClipLoader from 'react-spinners/ClipLoader';
+import { FadeLoader } from 'react-spinners';
 
 const Spinner = () => (
   <div className="h-[80vh] flex flex-col items-center justify-center bg-transparent">
-    <ClipLoader
+    <FadeLoader
+      radius={10}
       color="#5ea51e"
-      size={50}
     />
   </div>
 );

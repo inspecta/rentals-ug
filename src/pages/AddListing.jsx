@@ -5,10 +5,10 @@ import {
 } from 'firebase/storage';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { db } from '../firebase.config';
+import Spinner from '../components/Spinner';
 
 const AddListing = () => {
   const [loading, setLoading] = useState(false);
@@ -29,8 +29,8 @@ const AddListing = () => {
   });
 
   const {
-    type, name, bedrooms, bathrooms, parking, furnished, address, offer,
-    regularPrice, discountedPrice, images,
+    type, name, bedrooms, bathrooms, parking, furnished, address, description,
+    offer, regularPrice, discountedPrice, images,
   } = formData;
 
   // FormData must include the ID of the logged in user
@@ -55,7 +55,6 @@ const AddListing = () => {
 
   const handleListingSubmission = async (e) => {
     e.preventDefault();
-    // console.log(formData);
     setLoading(true);
 
     // Check the prices
@@ -122,8 +121,6 @@ const AddListing = () => {
       toast.error('Error while uploading photos.');
     });
 
-    console.log(imgUrls);
-
     // Save the listing information into the collection
     // Get the copy of the data
     const formDataCopy = {
@@ -176,13 +173,15 @@ const AddListing = () => {
   };
 
   if (loading) {
-    return <ClipLoader />;
+    return <Spinner />;
   }
 
   return (
-    <div className="font-nunito p-8">
+    <div className="px-0 md:px-5 lg:px-10">
       <header>
-        <h1 className="p-10 text-3xl font-extrabold">Create Listing</h1>
+        <h1 className="text-center py-8 text-xl font-extrabold text-green-500 lg:text-3xl">
+          Submit Your Listing Today
+        </h1>
       </header>
       <main>
         <form onSubmit={handleListingSubmission}>
@@ -311,7 +310,7 @@ const AddListing = () => {
           <div className="form-div">
             <label htmlFor="Address" className="form-label">
               Address
-              <textarea
+              <input
                 name="address"
                 id="address"
                 value={address}
@@ -319,6 +318,25 @@ const AddListing = () => {
                 cols="30"
                 rows="5"
                 className="form-inputs"
+                placeholder="Address"
+                required
+              />
+            </label>
+          </div>
+
+          {/* Address */}
+          <div className="form-div">
+            <label htmlFor="Description" className="form-label">
+              Description
+              <textarea
+                name="description"
+                id="description"
+                value={description}
+                onChange={handleInput}
+                cols="30"
+                rows="5"
+                className="form-inputs"
+                placeholder="Describe the listing ..."
                 required
               />
             </label>
@@ -393,7 +411,7 @@ const AddListing = () => {
                 onChange={handleInput}
                 max="6"
                 // value={images}
-                accept=".jpg, .png, .gif, .jpeg"
+                accept=".jpg, .png, .gif, .jpeg, .webp"
                 multiple
                 required
               />

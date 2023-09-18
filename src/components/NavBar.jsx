@@ -18,7 +18,7 @@ const NavBar = () => {
   });
 
   return (
-    <nav className="w-full px-4 py-5 mb-10 font-nunito bg-[#081637] fixed z-10 lg:bg-black lg:bg-opacity-40 xl:px-40">
+    <nav className="w-full px-4 py-5 mb-10 font-nunito bg-[#081637] fixed z-10 lg:bg-black lg:bg-opacity-80 xl:px-40">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           <Link to="/">
@@ -96,7 +96,7 @@ const NavBar = () => {
         </div>
 
         <div className="hidden bg-green-500 text-white px-3 py-2 rounded-md hover:bg-[#5ea51e] lg:block">
-          <Link to="/add-listing" className="nav-item" onClick={closeMenu}>
+          <Link to="/dashboard" className="nav-item" onClick={closeMenu}>
             SUBMIT A PROPERTY
           </Link>
         </div>

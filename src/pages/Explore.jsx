@@ -17,9 +17,6 @@ const Explore = () => (
           slidingDuration="250"
           orientation="horizontal"
           initialSlide={1}
-          onBeforeChange={(previousSlide, nextSlide) => console.log('onBeforeChange', previousSlide, nextSlide)}
-          onChange={(nextSlide) => console.log('onChange', nextSlide)}
-          onAfterChange={(nextSlide) => console.log('onAfterChange', nextSlide)}
           style={{
             backgroundColor: 'rgba(0,0,0,0.32)',
           }}
@@ -48,7 +45,7 @@ const Explore = () => (
               description="Discover a wide range of rental and sale listings tailored
               to your preferences. Whether it's a cozy apartment, a spacious house, or
               a commercial space, Rentals Ug has the perfect place for you."
-              buttonText="Learn More"
+              buttonText="SIGN IN"
             />
           </Slide>
           <Slide
@@ -63,7 +60,7 @@ const Explore = () => (
               property effortlessly on Rentals Ug. Our user-friendly platform makes it
               simple to showcase your property to a vast audience of potential buyers
               and tenants."
-              buttonText="Learn More"
+              buttonText="SIGN IN"
             />
           </Slide>
           <Slide
@@ -77,7 +74,7 @@ const Explore = () => (
               description="A small river named Duden flows by their place and supplies
               it with the necessary regelialia. It is a paradisematic country, in which
               roasted parts of sentences fly into your mouth."
-              buttonText="Learn More"
+              buttonText="SIGN IN"
             />
           </Slide>
           <Slide
@@ -91,7 +88,7 @@ const Explore = () => (
               description="Stay informed with our latest real estate insights and expert tips.
               Whether you're a seasoned investor or a first-time buyer, our blog covers everything
               from market trends to home improvement ideas to help you make informed decisions."
-              buttonText="Learn More"
+              buttonText="SIGN IN"
             />
           </Slide>
         </HeroSlider>

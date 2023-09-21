@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Container } from '../styled-components/StyledComponents';
 import Footer from '../components/Footer';
 import ListingItem from '../components/ListingItem';
 import Spinner from '../components/Spinner';
@@ -25,7 +26,6 @@ const Category = () => {
   const params = useParams();
 
   useEffect(() => {
-    // Fectch listings
     const fetchListings = async () => {
       try {
       // Get a reference to the listing collection
@@ -61,13 +61,14 @@ const Category = () => {
   }, [params.categoryName]);
 
   return (
-    <div>
+    <Container>
       <div className="font-nunito">
         <header className="p-6 text-center">
           <p className="text-[#5ea51e] font-bold p-4">OUR PROPERTIES</p>
           <p className="py-10 pt-0 text-4xl font-extrabold">
             Properties for
             {params.categoryName === 'rent' ? ' rent' : ' sale'}
+            {listings ? ` (${listings.length})` : ''}
           </p>
         </header>
         {loading
@@ -101,7 +102,7 @@ const Category = () => {
             )}
       </div>
       <Footer />
-    </div>
+    </Container>
   );
 };
 

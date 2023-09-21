@@ -93,9 +93,30 @@
     @apply text-xs font-bold text-white;
   }
 
-  /* Listing Slider */
+  /* 
+    * Listing Slider 
+  */
   .swiper-button-prev:after {
     @apply  bg-blue-600;
+  }
+
+  /*
+    * Dashboard NavLinks
+  */
+  .dash-navLinks {
+    @apply relative flex items-center justify-center gap-3 px-10 py-4 lg:justify-start lg:pr-0;
+  }
+
+  .dash-navLinks > i {
+    @apply text-[24px];
+  }
+
+  .dashLinks > li:hover {
+    @apply bg-[#00ff5c] bg-opacity-10;
+  }
+
+  .dash-stats {
+    @apply absolute bg-[#5ea51e] border border-black rounded-full text-black text-xs px-1 left-[75px] top-[10px] lg:left-[130px];
   }
 
 }

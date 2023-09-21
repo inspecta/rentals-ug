@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { auth, db } from '../firebase.config';
 import { visibilityIcon, keyboardArrowRightIcon } from '../components/Images';
 import OAuth from '../components/OAuth';
+import { Button } from '../styled-components/StyledComponents';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ const SignUp = () => {
 
       await setDoc(doc(db, 'users', uid), formDataCopy);
       toast.success('You have successfully been registered!');
-      navigate('/profile');
+      navigate('/dashboard');
     } catch (e) {
       toast.error('Oops. Something went wrong!');
     }
@@ -62,7 +63,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="font-nunito grid grid-cols-1 place-items-center">
+    <div className="font-nunito py-24 grid grid-cols-1 place-items-center">
       <header>
         <h1 className="p-10 text-3xl font-extrabold">You Are Welcome!</h1>
         <p className="p-10 text-center text-[#5ea51d] font-bold">Sign Up Today.</p>
@@ -91,6 +92,14 @@ const SignUp = () => {
             />
           </div>
           <div className="form-control">
+            <label htmlFor="">
+              Profile Picture
+              <br />
+              <br />
+              <input type="file" id="profile-photo" />
+            </label>
+          </div>
+          <div className="form-control">
             <input
               type={showPassword ? 'text' : 'password'}
               id="password"
@@ -108,17 +117,14 @@ const SignUp = () => {
             </button>
           </div>
           <OAuth />
-          <button
-            type="submit"
-            className="bg-[#5ea51e] p-3 flex items-center w-full justify-center"
-          >
-            <span className="text-xs font-bold text-white hover:text-gray-200">SIGN UP</span>
-            <img
-              src={keyboardArrowRightIcon}
-              className="rounded-xl fill-white"
-              alt="Sign In Icon"
+          <div className="flex justify-center">
+            <Button
+              $primary
+              type="submit"
+              btnText="Sign Up"
+              btnImage={keyboardArrowRightIcon}
             />
-          </button>
+          </div>
         </form>
         <div className="p-10 text-center hover:text-[#5ea51d] font-normal underline">
           <Link to="/sign-in">

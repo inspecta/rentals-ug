@@ -1,6 +1,5 @@
 import ForgotPassword from '../pages/ForgotPassword';
 import Offers from '../pages/Offers';
-import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import NavBar from './NavBar';
@@ -17,7 +16,6 @@ import About from '../pages/About';
 export {
   ForgotPassword,
   Offers,
-  Profile,
   SignIn,
   SignUp,
   NavBar,

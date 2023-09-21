@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
+import { Button, Header, Title } from '../styled-components/StyledComponents';
 
 const AddListing = () => {
   const [loading, setLoading] = useState(false);
@@ -178,11 +179,11 @@ const AddListing = () => {
 
   return (
     <div className="px-0 md:px-5 lg:px-10">
-      <header>
-        <h1 className="text-center py-8 text-xl font-extrabold text-green-500 lg:text-3xl">
+      <Header>
+        <Title>
           Submit Your Listing Today
-        </h1>
-      </header>
+        </Title>
+      </Header>
       <main>
         <form onSubmit={handleListingSubmission}>
           {/* Sale or rental */}
@@ -421,12 +422,11 @@ const AddListing = () => {
           <div
             className="mt-4 flex justify-center"
           >
-            <button
+            <Button
+              $primary
               type="submit"
-              className="btn btn-primary"
-            >
-              Create Listing
-            </button>
+              btnText="Create Listing"
+            />
           </div>
         </form>
       </main>

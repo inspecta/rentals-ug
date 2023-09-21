@@ -20,6 +20,7 @@ import { profilePhoto } from './Images';
 import AddListing from '../pages/AddListing';
 import Spinner from './Spinner';
 import ListingItem from './ListingItem';
+import { DashDiv, DashDivTitle, Title } from '../styled-components/StyledComponents';
 
 const Dashboard = () => {
   const auth = getAuth();
@@ -86,15 +87,15 @@ const Dashboard = () => {
     backgroundColor: navLink === activeNavLink ? activeLinkStyles.backgroundColor : 'rgb(0, 0, 0, 0)',
   });
 
-  const onLogout = () => {
-    auth.signOut();
-    toast.success('Logged out successfully!');
-    navigate('/sign-in');
-  };
-
   if (loading) {
     return <Spinner />;
   }
+
+  const onLogout = () => {
+    auth.signOut();
+    navigate('/');
+    toast.success('Logged out successfully!');
+  };
 
   if (listings) {
     sales.push(listings.filter((listing) => (listing.data.type === 'sale')));
@@ -122,7 +123,6 @@ const Dashboard = () => {
             <div className="text-center">
               <h3 className="font-bold text-sm lg:text-md">{name}</h3>
               <p className="font-thin text-xs lg:text-sm">Property Manager</p>
-              <span className="font-thin text-xs lg:text-sm">{email}</span>
             </div>
           </div>
           <hr />
@@ -214,21 +214,46 @@ const Dashboard = () => {
         {activeNavLink === 'dashboard' && (
           <div id="main-content">
             <header className="px-0 md:px-5 lg:px-10">
-              <h1 className="text-center py-8 text-xl font-extrabold text-green-500 lg:text-3xl">
+              <Title>
                 Account Details
-              </h1>
+              </Title>
             </header>
-            <div className="px-5">
-              <div>
+            <div className="">
+              <DashDiv>
                 Banner
-              </div>
-              <div>
-                Your account details
-              </div>
-              <div>
-                <div>Rentals</div>
-                <div>Sales</div>
-                <div>Total Worth</div>
+              </DashDiv>
+              <div className="grid grid-cols-1 xl:grid-cols-3 xl:gap-4">
+                <DashDiv>
+                  <DashDivTitle>Account details</DashDivTitle>
+                  <div>
+                    <p>
+                      <span className="mr-2 font-bold">Name:</span>
+                      <span>{name}</span>
+                    </p>
+                    <p>
+                      <span className="mr-2 font-bold">Email:</span>
+                      {email}
+                    </p>
+                  </div>
+                </DashDiv>
+                <DashDiv>
+                  <DashDivTitle>
+                    <i className="fa fa-home mr-3 bg-green-400 rounded-full p-2" />
+                    Rentals
+                  </DashDivTitle>
+                  <p className="text-4xl font-bold xl:text-6xl xl:font-extrabold">
+                    {rentals[0].length}
+                  </p>
+                </DashDiv>
+                <DashDiv>
+                  <DashDivTitle>
+                    <i className="fa fa-shopping-cart mr-3 bg-green-400 rounded-full p-2" />
+                    Sales
+                  </DashDivTitle>
+                  <p className="text-4xl font-bold xl:text-6xl xl:font-extrabold">
+                    {sales[0].length}
+                  </p>
+                </DashDiv>
               </div>
             </div>
           </div>
@@ -241,9 +266,9 @@ const Dashboard = () => {
         {activeNavLink === 'rentals' && (
           <div id="rentals">
             <header className="px-0 md:px-5 lg:px-10">
-              <h1 className="text-center py-8 text-xl font-extrabold text-green-500 lg:text-3xl">
+              <Title>
                 Rental Listings
-              </h1>
+              </Title>
             </header>
             {loading
               ? <Spinner />
@@ -265,7 +290,7 @@ const Dashboard = () => {
                               address: listing.data.address,
                               offer: listing.data.offer,
                               owner: listing.data.userRef,
-                              timestamp: listing.data.timestamp,
+                              timestamp: listing.data.timestamp.toString(),
                             }}
                             id={listing.id}
                             key={listing.id}
@@ -287,9 +312,9 @@ const Dashboard = () => {
         {activeNavLink === 'sales' && (
           <div id="sales" className="">
             <header className="px-0 md:px-5 lg:px-10">
-              <h1 className="text-center py-8 text-xl font-extrabold text-green-500 lg:text-3xl">
+              <Title>
                 Sale Listings
-              </h1>
+              </Title>
             </header>
             {loading
               ? <Spinner />
@@ -311,7 +336,7 @@ const Dashboard = () => {
                               address: listing.data.address,
                               offer: listing.data.offer,
                               owner: listing.data.userRef,
-                              timestamp: listing.data.timestamp,
+                              timestamp: listing.data.timestamp.toString(),
                             }}
                             id={listing.id}
                             key={listing.id}

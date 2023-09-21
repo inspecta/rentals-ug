@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
-import calculateTimeDifference from '../functions/CalculateDate';
+import { calculateTimeDifference } from '../functions/CalculateDate';
 import {
   bathtubIcon, bedIcon, defaultUserIcon, locationIcon,
 } from './Images';
@@ -162,7 +162,7 @@ const ListingItem = ({ listing, id }) => {
 ListingItem.propTypes = {
   listing: PropTypes.shape({
     type: PropTypes.string.isRequired,
-    imgUrls: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    imgUrls: PropTypes.arrayOf(PropTypes.string.isRequired),
     name: PropTypes.string.isRequired,
     address: PropTypes.string.isRequired,
     offer: PropTypes.bool.isRequired,
@@ -170,8 +170,11 @@ ListingItem.propTypes = {
     discountedPrice: PropTypes.number.isRequired,
     bedrooms: PropTypes.number.isRequired,
     bathrooms: PropTypes.number.isRequired,
-    owner: PropTypes.string.isRequired,
-    timestamp: PropTypes.string.isRequired,
+    owner: PropTypes.string,
+    timestamp: PropTypes.shape({
+      seconds: PropTypes.number.isRequired,
+      nanoseconds: PropTypes.number.isRequired,
+    }),
   }).isRequired,
   id: PropTypes.string.isRequired,
 };

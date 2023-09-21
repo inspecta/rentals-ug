@@ -34,7 +34,7 @@ const OAuth = () => {
         });
       }
       toast.success('Successfully authorized with Google!');
-      navigate('/profile');
+      navigate('/dashboard');
     } catch (err) {
       toast.error("Couldn't authorize with Google");
     }

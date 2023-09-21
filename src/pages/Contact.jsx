@@ -4,7 +4,7 @@ import {
   useParams, useSearchParams, useNavigate,
 } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import Container from '../components/Container';
+import { Container } from '../styled-components/StyledComponents';
 import Spinner from '../components/Spinner';
 import { db } from '../firebase.config';
 
@@ -59,21 +59,20 @@ const Contact = () => {
           onClick={() => navigate(-1)}
           className="bg-gray-800 px-3 text-white hover:text-gray-400"
         >
-          <span>{'<'}</span>
-          {' '}
           Back
         </button>
       </div>
-      <header className="text-center">
-        <p className="text-[#5ea51e] font-bold p-4">PROPERTY OWNER</p>
-        <h1 className="py-10 pt-0 text-4xl font-extrabold">
-          Owner:
-          {' '}
-          {owner.name}
-        </h1>
-      </header>
+      <div className="px-4 py-8 bg-white mt-10 mb-10 rounded-lg lg:px-20 lg:mb-0">
+        <header className="text-center">
+          <p className="text-[#5ea51e] font-bold p-4">PROPERTY OWNER</p>
+          <h1 className="py-10 pt-0 text-4xl font-extrabold">
+            Owner:
+            {' '}
+            {owner.name}
+          </h1>
+        </header>
 
-      {owner !== null && (
+        {owner !== null && (
         <div className="p-3">
           <form>
             <div>
@@ -82,7 +81,7 @@ const Contact = () => {
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Your Full name"
+                  placeholder="Your name"
                   className="form-inputs"
                   value={name}
                   onChange={onChange}
@@ -96,7 +95,7 @@ const Contact = () => {
                   type="tel"
                   name="phone"
                   id="phone"
-                  placeholder="Your Phone no."
+                  placeholder="Your phone no."
                   className="form-inputs"
                   value={phone}
                   onChange={onChange}
@@ -127,7 +126,8 @@ const Contact = () => {
             </a>
           </form>
         </div>
-      )}
+        )}
+      </div>
     </Container>
   );
 };
